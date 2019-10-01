@@ -3,15 +3,16 @@ angular
 
 angular
 	.module('gridReport')
-	.directive('gfSimple', [
-		function () {
-			return {
-				restrict: 'E',
-				replace: true,
-				scope: {
-					message: '='
-				},
-				template: '<div>{{message}}</div>'
-			};
-		}
-	]);
+	.factory('gfManagementService', function () {
+		return {
+			showDialog: function (message) {
+				alert(message);
+			}
+		};
+	})
+	.component('gfSimple', {
+		bindings: {
+			message: '<'
+		},
+		template: '<span>Message: {{$ctrl.message}}</span>'
+	});
